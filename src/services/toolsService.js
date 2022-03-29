@@ -1,13 +1,14 @@
 import * as toolsRepository from "../repositories/toolsRepository.js";
+import * as tagsRepository from "../repositories/tagsRepository.js";
 
 async function getAllTools() {
   const allTools = await toolsRepository.getAllTools();
   let result = allTools.rows;
-
   for (let i = 0; i < result.length; i++) {
-    const allTags = await toolsRepository.getTagsFromTool(i + 1);
+    const allTags = await tagsRepository.getTagsFromTool(result[i].id);
     result[i].tags = [];
-    allTags.map((tag) => {
+
+    await allTags.map((tag) => {
       result[i].tags.push(tag.name);
     });
   }
@@ -20,7 +21,7 @@ async function postTool(tool) {
   const toolId = await toolsRepository.postTool(tool);
   const { id } = toolId.rows[0];
   await tags.forEach((tag) => {
-    toolsRepository.postTags(tag, id);
+    tagsRepository.postTags(tag, id);
   });
 }
 
