@@ -15,4 +15,13 @@ async function getAllTools() {
   return await result;
 }
 
-export { getAllTools };
+async function postTool(tool){
+    const {tags} = tool;
+    const toolId = await toolsRepository.postTool(tool);
+    const {id} = toolId.rows[0]
+    await tags.forEach(tag => {
+        toolsRepository.postTags(tag,id);
+    });
+}
+
+export { getAllTools, postTool };

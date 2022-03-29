@@ -1,11 +1,29 @@
 import connection from "../database.js";
 
-async function getAllTools(){
-    return await connection.query("SELECT * FROM tools")
-}
-async function getTagsFromTool(toolId){
-    const allTags =  await connection.query("SELECT name FROM tags WHERE tool_id=$1",[toolId])
-    return allTags.rows;
+async function getAllTools() {
+  return await connection.query("SELECT * FROM tools");
 }
 
-export{ getAllTools,getTagsFromTool };
+async function getTagsFromTool(toolId) {
+  const allTags = await connection.query(
+    "SELECT name FROM tags WHERE tool_id=$1",
+    [toolId]
+  );
+  return allTags.rows;
+}
+
+async function postTool({ title, link, description }) {
+  return await connection.query(
+    "INSERT INTO tools (title,link,description) VALUES ($1,$2,$3) RETURNING id",
+    [title, link, description]
+  );
+}
+
+async function postTags(tag, id) {
+    console.log(tag,id)
+  await connection.query(
+    "INSERT INTO tags (name,tool_id) VALUES ($1,$2)",[tag,id]
+  );
+}
+
+export { getAllTools, getTagsFromTool, postTool, postTags };

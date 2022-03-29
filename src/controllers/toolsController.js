@@ -14,10 +14,14 @@ async function getAllTools(req, res, next) {
 async function postTool(req, res, next) {
   try {
     await validations.toolsValidations(req.body);
+    await toolsService.postTool(req.body);
+
     res.sendStatus(201);
   } catch (error) {
     if (error instanceof ValidationError)
       return res.status(400).send(error.message);
+    if (error.code === "23505")
+      return res.status(409).send("The Tool already exists");
     next(error);
   }
 }
