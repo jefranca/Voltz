@@ -5,7 +5,7 @@ async function getAllTools() {
   let result = allTools.rows;
 
   for (let i = 0; i < result.length; i++) {
-    const allTags = await toolsRepository.getTagsFromTool(i+1);
+    const allTags = await toolsRepository.getTagsFromTool(i + 1);
     result[i].tags = [];
     allTags.map((tag) => {
       result[i].tags.push(tag.name);
@@ -15,13 +15,17 @@ async function getAllTools() {
   return await result;
 }
 
-async function postTool(tool){
-    const {tags} = tool;
-    const toolId = await toolsRepository.postTool(tool);
-    const {id} = toolId.rows[0]
-    await tags.forEach(tag => {
-        toolsRepository.postTags(tag,id);
-    });
+async function postTool(tool) {
+  const { tags } = tool;
+  const toolId = await toolsRepository.postTool(tool);
+  const { id } = toolId.rows[0];
+  await tags.forEach((tag) => {
+    toolsRepository.postTags(tag, id);
+  });
 }
 
-export { getAllTools, postTool };
+async function deleteTool(id) {
+  await toolsRepository.deleteTool(id);
+}
+
+export { getAllTools, postTool, deleteTool };

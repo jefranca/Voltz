@@ -5,6 +5,7 @@ import * as validations from "../validations/validations.js";
 async function getAllTools(req, res, next) {
   try {
     const allTools = await toolsService.getAllTools();
+    
     res.status(200).send(allTools);
   } catch (error) {
     next(error);
@@ -26,4 +27,16 @@ async function postTool(req, res, next) {
   }
 }
 
-export { getAllTools, postTool };
+async function deleteTool(req, res, next){
+  try {
+    const {id} = req.params;
+
+    await toolsService.deleteTool(id)
+
+    res.sendStatus(200)
+  } catch (error) {
+    next(error);
+  }
+}
+
+export { getAllTools, postTool, deleteTool };

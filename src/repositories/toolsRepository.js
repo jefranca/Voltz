@@ -20,10 +20,14 @@ async function postTool({ title, link, description }) {
 }
 
 async function postTags(tag, id) {
-    console.log(tag,id)
   await connection.query(
     "INSERT INTO tags (name,tool_id) VALUES ($1,$2)",[tag,id]
   );
 }
 
-export { getAllTools, getTagsFromTool, postTool, postTags };
+async function deleteTool(id){
+    await connection.query("DELETE FROM tags WHERE tool_id=$1", [id]);
+    await connection.query("DELETE FROM tools WHERE id=$1" ,[id])
+}
+
+export { getAllTools, getTagsFromTool, postTool, postTags, deleteTool };
