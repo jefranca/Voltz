@@ -13,7 +13,8 @@ This route will list all tools included.
 Example:
 
 ```
-{
+[
+  {
     "id": 1,
     "title": "Notion",
     "link": "https://notion.so",
@@ -54,6 +55,7 @@ Example:
       "localhost"
     ]
   }
+]
 
 ```
 
