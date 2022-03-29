@@ -9,4 +9,8 @@ async function getAllTools(req, res, next) {
   }
 }
 
-export{ getAllTools };
+async function postTool(){
+  await validations.toolsValidation(req.body);
+}
+
+export{ getAllTools, postTool };
