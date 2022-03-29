@@ -3,7 +3,7 @@
     "info":{
         "title": "Voltz Tools",
         "description": "API to save tools to help at work",
-        "version":"1.0.0"
+        "version":"1.0.1"
     },
     "servers":[{
         "url": "http://localhost:3000",
@@ -125,6 +125,9 @@
                     "responses":{
                         "200":{
                             "description":"tool deleted"
+                        },
+                        "404":{
+                            "description":"No id parameter has been send"
                         }
                     }
                 }
