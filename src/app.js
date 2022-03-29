@@ -10,6 +10,7 @@ app.use(cors());
 
 app.get("/health", async (req, res) => res.sendStatus(200));
 app.get("/tools", toolsController.getAllTools);
+app.post("/tools", toolsController.postTool);
 
 app.use(errorHandler);
 
