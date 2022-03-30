@@ -29,4 +29,8 @@ async function deleteTool(id) {
   await toolsRepository.deleteTool(id);
 }
 
-export { getAllTools, postTool, deleteTool };
+async function getOneTool(id){
+  return await toolsRepository.getOneTool(id);
+}
+
+export { getAllTools, postTool, deleteTool, getOneTool };

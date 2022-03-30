@@ -16,4 +16,8 @@ async function deleteTool(id) {
   await connection.query("DELETE FROM tools WHERE id=$1", [id]);
 }
 
-export { getAllTools, postTool, deleteTool };
+async function getOneTool(id){
+  return await connection.query("SELECT * FROM tools WHERE id=$1", [id])
+}
+
+export { getAllTools, postTool, deleteTool, getOneTool };
