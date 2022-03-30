@@ -1,7 +1,7 @@
 {
   "name": "voltz",
-  "type": "module",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -13,12 +13,18 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.17.0",
+    "@babel/preset-env": "^7.16.11",
+    "babel-jest": "^27.5.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
+    "faker-br": "^0.4.1",
+    "jest": "^27.5.1",
     "joi": "^17.6.0",
     "nodemon": "^2.0.15",
     "pg": "^8.7.3",
+    "supertest": "^6.2.2",
     "swagger-ui-express": "^4.3.0"
   }
 }

@@ -31,6 +31,10 @@ async function deleteTool(req, res, next){
   try {
     const {id} = req.params;
 
+    const existTool = await toolsService.getOneTool(id)
+    console.log(existTool)
+    if(existTool.rowCount === 0) return res.status(400).send("The Tool does not exist");
+
     await toolsService.deleteTool(id)
 
     res.sendStatus(200)

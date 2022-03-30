@@ -1,4 +1,4 @@
-{
+export default {
     "openapi": "3.0.0",
     "info":{
         "title": "Voltz Tools",
@@ -128,6 +128,9 @@
                         },
                         "404":{
                             "description":"No id parameter has been send"
+                        },
+                        "400":{
+                            "description":"Tool does not exist"
                         }
                     }
                 }
