@@ -128,6 +128,9 @@ export default {
                         },
                         "404":{
                             "description":"No id parameter has been send"
+                        },
+                        "400":{
+                            "description":"Tool does not exist"
                         }
                     }
                 }
