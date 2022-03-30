@@ -82,4 +82,10 @@ describe("DELETE /tools/:id", () => {
 
     expect(result.status).toEqual(404);
   });
+
+  it("returns 400 when the tool does not exist", async () => {
+    const result = await request.delete("/tools/0");
+
+    expect(result.status).toEqual(400);
+  });
 });
