@@ -5,9 +5,7 @@ import swaggerUi from "swagger-ui-express"
 import errorHandler from "./middlewares/errorHandler.js";
 import * as toolsController from "./controllers/toolsController.js";
 
-import { createRequire } from 'module';
-const require = createRequire(import.meta.url);
-const swaggerDocs = require("../openApi.json");
+import swaggerDocs from "../openApi.js";
 
 const app = express();
 app.use(express.json());
